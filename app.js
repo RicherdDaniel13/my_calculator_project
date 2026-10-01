@@ -30,11 +30,35 @@ function calculate(operation, a, b) {
 // Home page
 app.get("/", (req, res) => {
     res.send(`
-        <h1>Node.js Calculator</h1>
-        <p>Use the API to perform calculations.</p>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Richerd Daniel's Calculator</title>
 
-        <h3>Example:</h3>
-        <p>/calculate/add/10/5</p>
+            <style>
+                body {
+                    margin: 0;
+                    height: 100vh;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-family: Arial, sans-serif;
+                    background-color: #f4f4f4;
+                }
+
+                h1 {
+                    font-size: 48px;
+                    text-align: center;
+                }
+            </style>
+        </head>
+
+        <body>
+            <h1>Richerd Daniel's Calculator</h1>
+        </body>
+        </html>
     `);
 });
 
@@ -53,7 +77,6 @@ app.get("/calculate/:operation/:a/:b", (req, res) => {
     }
 
     try {
-
         const result = calculate(operation, numA, numB);
 
         res.json({
@@ -64,11 +87,9 @@ app.get("/calculate/:operation/:a/:b", (req, res) => {
         });
 
     } catch (error) {
-
         res.status(400).json({
             error: error.message
         });
-
     }
 });
 
@@ -82,3 +103,5 @@ app.get("/health", (req, res) => {
 app.listen(PORT, () => {
     console.log(`Calculator app running on port ${PORT}`);
 });
+
+
